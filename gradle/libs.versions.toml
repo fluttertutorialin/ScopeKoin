@@ -14,9 +14,7 @@ junit = "4.13.2"
 kotlin = "2.3.20-RC"
 kotlinx-coroutines = "1.10.2"
 voyager = "1.0.1"
-koin = "4.1.1"
-
-
+koin = "4.2.0-RC1"
 
 [libraries]
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }

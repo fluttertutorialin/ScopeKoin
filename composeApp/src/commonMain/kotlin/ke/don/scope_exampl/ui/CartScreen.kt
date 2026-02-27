@@ -47,6 +47,7 @@ class CartScreen(
     @Composable
     override fun Content() {
         val navigator = LocalNavigator.current
+
         val koin = getKoin()
         val scope = remember { koin.getScope(scopeID) }
         val cartManager: CartManager = scope.get()

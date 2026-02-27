@@ -13,6 +13,7 @@ import org.koin.core.parameter.parametersOf
 import org.koin.core.qualifier.named
 import org.koin.core.scope.Scope
 import org.koin.dsl.module
+import org.koin.mp.KoinPlatform.getKoin
 import kotlin.uuid.ExperimentalUuidApi
 
 val checkoutModule = module {
@@ -89,10 +90,11 @@ class CheckoutViewModel(scopeId: String) : ViewModel(), KoinScopeComponent {
     }
 }
 
+
 @OptIn(ExperimentalUuidApi::class)
 @Composable
 fun CheckoutScreen () {
-    //val scopeId = remember { "checkout_${Uuid.random()}" }
+    //val scopeId = remember { "checkout_${Uuid.random()}" } //kotlin.random.Random.nextInt()}
     val scopeId = remember { "checkout" } //static scope id
 
     val viewModel: CheckoutViewModel = koinViewModel(
