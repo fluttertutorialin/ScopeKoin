@@ -14,17 +14,27 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import cafe.adriel.voyager.core.stack.StackEvent
 import cafe.adriel.voyager.navigator.Navigator
+import ke.don.scope_exampl.di.initKoin
+import ke.don.scope_exampl.di.scopeModule
 import ke.don.scope_exampl.ui.HomeScreen
+import ke.don.scope_exampl.ui.checkoutModule
 import org.jetbrains.compose.ui.tooling.preview.Preview
+import org.koin.compose.KoinApplication
 import org.koin.compose.KoinContext
+import org.koin.compose.KoinMultiplatformApplication
+import org.koin.core.KoinApplication
+import org.koin.core.annotation.KoinExperimentalAPI
+import org.koin.core.logger.Level
+import org.koin.dsl.KoinConfiguration
 
+@OptIn(KoinExperimentalAPI::class)
 @Composable
-@Preview
 fun App() {
-    MaterialTheme {
-        var showContent by remember { mutableStateOf(false) }
-        KoinContext{
-            Navigator(HomeScreen){ navigator ->
+    KoinApplication(configuration = KoinConfiguration(
+        config = { initKoin() }
+    ), content = {
+        MaterialTheme {
+            Navigator(HomeScreen) { navigator ->
                 AnimatedContent(
                     targetState = navigator.lastItem,
                     transitionSpec = {
@@ -41,5 +51,7 @@ fun App() {
                 }
             }
         }
-    }
+    })
 }
+
+
